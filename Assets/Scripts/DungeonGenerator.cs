@@ -28,13 +28,14 @@ public class DungeonGenerator : MonoBehaviour
         int x = 0;
         spawnPoints.x = 0;
         spawnPoints.y = 0;
-        for (int i = 0; i < xDungeon; i++)
+       
+        for (int i = 0; i < yDungeon; i++)
         {
-            spawnPoints.x += 8;
-            for (int j = 0; j < yDungeon; j++)
+            spawnPoints.y += 8;
+            for (int j = 0; j < xDungeon; j++)
             {               
                 Debug.Log("x " + x);
-                spawnPoints.y += 8;
+                spawnPoints.x += 8;
                 generator.transform.position = spawnPoints;
                 Debug.Log(generator.transform.position);
                 transformsSpawn[x] = generator.transform;
@@ -43,7 +44,7 @@ public class DungeonGenerator : MonoBehaviour
                 x++;
                             
             }
-            spawnPoints.y = 0;
+            spawnPoints.x = 0;
            
         }
     }
@@ -54,9 +55,7 @@ public class DungeonGenerator : MonoBehaviour
         {
             Vector3 pos;
             pos = transformsSpawn[roomNumber].transform.position;
-            
-            roomAmount[roomNumber] = Random.Range(0, 5);   
-            
+                   
             switch (roomAmount[roomNumber] = Random.Range(0, 5))
             {
                 case 0:
