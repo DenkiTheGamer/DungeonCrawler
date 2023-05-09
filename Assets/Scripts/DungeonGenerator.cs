@@ -55,27 +55,68 @@ public class DungeonGenerator : MonoBehaviour
         {
             Vector3 pos;
             pos = transformsSpawn[roomNumber].transform.position;
-                   
+            //X-Axis
+            if (roomNumber - 1 != -1)
+            {
+                Debug.LogWarning(roomAmount[roomNumber - 1] + "roomNumber x-1");
+                Debug.LogWarning(roomNumber);
+            }
+            else
+            {
+                Debug.LogError("-1 -Array");
+            }
+            if (roomNumber + 1 != roomAmount.Length + 1)
+            {
+                Debug.LogWarning(roomAmount[roomNumber + 1] + "roomNumber x+1");
+                Debug.LogWarning(roomNumber);
+            }
+            else
+            {
+                Debug.LogError("+1 +Array");
+            }
+            //Y-Axis
+            if (roomNumber - xDungeon < 0)
+            {              
+                Debug.LogError("xDungeon -Array");
+            }
+            else
+            {
+                Debug.LogWarning(roomAmount[roomNumber - xDungeon] + "roomNumber y-1");
+                Debug.LogWarning(roomNumber);
+            }
+            if (roomNumber + xDungeon > roomAmount.Length)
+            {                
+                Debug.LogError("xDungeon +Array");
+            }
+            else
+            {
+                Debug.LogWarning(roomAmount[roomNumber + xDungeon] + "roomNumber y+1");
+                Debug.LogWarning(roomNumber);
+            }
+
             switch (roomAmount[roomNumber] = Random.Range(0, 5))
             {
                 case 0:
                     Instantiate(dungeonPieces[0], pos, rot);
+                    roomNumber++;
                     break;
                 case 1:
                     Instantiate(dungeonPieces[1], pos, rot);
+                    roomNumber++;
                     break;
                 case 2:
                     Instantiate(dungeonPieces[2], pos, rot);
+                    roomNumber++;
                     break;
-                case 3:
+                case 3:                   
                     Instantiate(dungeonPieces[3], pos, rot);
+                    roomNumber++;              
                     break;
                 case 4:
                     Instantiate(dungeonPieces[4], pos, rot);
+                    roomNumber++;
                     break;
-            }
-
-            roomNumber++;
+            }           
         }
     }
 }
