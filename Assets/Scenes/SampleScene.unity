@@ -954,7 +954,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5581839953238407888, guid: c757f5ae7d7a8054c9b29f0d1b6616cb, type: 3}
       propertyPath: yDungeon
-      value: 5
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5581839953238407888, guid: c757f5ae7d7a8054c9b29f0d1b6616cb, type: 3}
+      propertyPath: roomNumber
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5581839953238407888, guid: c757f5ae7d7a8054c9b29f0d1b6616cb, type: 3}
+      propertyPath: roomAmount.Array.size
+      value: 9999
       objectReference: {fileID: 0}
     - target: {fileID: 5581839953238407889, guid: c757f5ae7d7a8054c9b29f0d1b6616cb, type: 3}
       propertyPath: m_Name

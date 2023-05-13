@@ -13,14 +13,19 @@ public class DungeonGenerator : MonoBehaviour
 
     public int rooms;
     public int[] roomAmount;
+    //public List<int> roomAmount;
     public int roomNumber = 0;
     public int xDungeon;    
-    public int yDungeon;   
+    public int yDungeon;
+
+    public int roomTypeX;
+    public int roomTypeY;
 
 
     private void Start()
     {
         rooms = xDungeon * yDungeon;     
+        //roomAmount.
         Generate();
     }   
     private void Generate()
@@ -48,6 +53,29 @@ public class DungeonGenerator : MonoBehaviour
            
         }
     }
+
+    public void roomCheck()
+    {
+        if (roomNumber - 1 < 0 || roomNumber % xDungeon == 0)
+        {
+            Debug.LogWarning("x-1 fail");
+        }
+        else
+        {
+            Debug.LogWarning(roomAmount[roomNumber - 1] + "x-1");
+            roomTypeX = roomAmount[roomNumber - 1];
+        }
+        if (roomNumber - xDungeon < 0)
+        {
+            Debug.LogWarning("y-1 fail");
+        }
+        else
+        {
+            Debug.LogWarning(roomAmount[roomNumber - xDungeon] + "y-1");
+            roomTypeY = roomAmount[roomNumber - xDungeon];
+        }
+    }
+
     private void GenerateDungeon()
     {
         Debug.Log("roomNumber " + roomNumber);
@@ -55,44 +83,10 @@ public class DungeonGenerator : MonoBehaviour
         {
             Vector3 pos;
             pos = transformsSpawn[roomNumber].transform.position;
-            //X-Axis
-            if (roomNumber - 1 != -1)
-            {
-                Debug.LogWarning(roomAmount[roomNumber - 1] + "roomNumber x-1");
-                Debug.LogWarning(roomNumber);
-            }
-            else
-            {
-                Debug.LogError("-1 -Array");
-            }
-            if (roomNumber + 1 != roomAmount.Length + 1)
-            {
-                Debug.LogWarning(roomAmount[roomNumber + 1] + "roomNumber x+1");
-                Debug.LogWarning(roomNumber);
-            }
-            else
-            {
-                Debug.LogError("+1 +Array");
-            }
-            //Y-Axis
-            if (roomNumber - xDungeon < 0)
-            {              
-                Debug.LogError("xDungeon -Array");
-            }
-            else
-            {
-                Debug.LogWarning(roomAmount[roomNumber - xDungeon] + "roomNumber y-1");
-                Debug.LogWarning(roomNumber);
-            }
-            if (roomNumber + xDungeon > roomAmount.Length)
-            {                
-                Debug.LogError("xDungeon +Array");
-            }
-            else
-            {
-                Debug.LogWarning(roomAmount[roomNumber + xDungeon] + "roomNumber y+1");
-                Debug.LogWarning(roomNumber);
-            }
+
+            roomCheck();        
+            
+            Debug.LogWarning(roomNumber + "roomNumber");
 
             switch (roomAmount[roomNumber] = Random.Range(0, 5))
             {
