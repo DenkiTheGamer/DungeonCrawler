@@ -21,6 +21,7 @@ public class DungeonGenerator : MonoBehaviour
 
     public int roomTypeX;
     public int roomTypeY;
+    public bool roomType6Spawn;
 
 
     private void Start()
@@ -59,11 +60,13 @@ public class DungeonGenerator : MonoBehaviour
         if (roomNumber - 1 < 0 || roomNumber % xDungeon == 0)
         {
             //Debug.LogWarning("x-1 fail");
+            roomType6Spawn = false;
         }
         else
         {
             //Debug.LogWarning(roomAmount[roomNumber - 1] + "x-1");
             roomTypeX = roomAmount[roomNumber - 1];
+            roomType6Spawn = true;
         }
         if (roomNumber - xDungeon < 0)
         {
@@ -88,7 +91,7 @@ public class DungeonGenerator : MonoBehaviour
             
             //Debug.LogWarning(roomNumber + "roomNumber");
 
-            switch (roomAmount[roomNumber] = Random.Range(0, 6))
+            switch (roomAmount[roomNumber] = Random.Range(0, 7))
             {
                 case 0:
                     if (roomTypeX == 4 || roomTypeX == 5 || roomTypeY == 1 || roomTypeY == 2)
@@ -103,7 +106,7 @@ public class DungeonGenerator : MonoBehaviour
                     }
                     break;
                 case 1:
-                    if (roomTypeX == 5 || roomTypeX == 4 || roomTypeY == 0 || roomTypeY == 3 || roomTypeY == 4 || roomTypeY == 5)
+                    if (roomTypeX == 5 || roomTypeX == 4 || roomTypeY == 0 || roomTypeY == 3 || roomTypeY == 4 || roomTypeY == 5 || roomTypeY == 6)
                     {
                         GenerateDungeon();
                         //Debug.LogError("RoomType 1 fail RoomType 4 or 5 x-1");
@@ -127,7 +130,7 @@ public class DungeonGenerator : MonoBehaviour
                     }
                     break;
                 case 3:
-                    if (roomTypeX == 0 || roomTypeX == 1 || roomTypeX == 2 || roomTypeX == 3 || roomTypeY == 0 || roomTypeY == 3 || roomTypeY == 4 || roomTypeY == 5)
+                    if (roomTypeX == 0 || roomTypeX == 1 || roomTypeX == 2 || roomTypeX == 3 || roomTypeY == 0 || roomTypeY == 3 || roomTypeY == 4 || roomTypeY == 5 || roomTypeY == 6)
                     {
                         GenerateDungeon();
                         //Debug.LogError("RoomType 3 fail RoomType 0 or 1 or 2 or 3 x-1");
@@ -139,7 +142,7 @@ public class DungeonGenerator : MonoBehaviour
                     }
                     break;
                 case 4:
-                    if (roomTypeX == 5 || roomTypeX == 4 || roomTypeY == 4 || roomTypeY == 3 || roomTypeY == 0 || roomTypeY == 5)
+                    if (roomTypeX == 5 || roomTypeX == 4 || roomTypeY == 4 || roomTypeY == 3 || roomTypeY == 0 || roomTypeY == 5 || roomTypeY == 6)
                     {
                         GenerateDungeon();
                         //Debug.LogError("RoomType 4 fail RoomType 4 or 5 x-1");
@@ -159,6 +162,17 @@ public class DungeonGenerator : MonoBehaviour
                     else
                     {
                         Instantiate(dungeonPieces[5], pos, rot);
+                        roomNumber++;
+                    }
+                    break;
+                case 6:
+                    if(roomTypeX == 4 || roomTypeX == 5 || roomTypeX == 1 || roomTypeX == 2 || roomTypeX == 6  || roomTypeX == 3 || roomTypeY == 1 || roomTypeY == 2 || roomType6Spawn == false)
+                    {
+                        GenerateDungeon();
+                    }
+                    else
+                    {
+                        Instantiate(dungeonPieces[6], pos, rot);
                         roomNumber++;
                     }
                     break;
