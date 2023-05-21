@@ -58,11 +58,13 @@
     <Analyzer Include="D:\Programme\Unity\Editor\2022.2.11f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\ObjectPickup.cs" />
     <Compile Include="Assets\Scripts\DungeonGenerator.cs" />
     <Compile Include="Assets\Scripts\PlayerCombat.cs" />
     <Compile Include="Assets\Input\PlayerControls.cs" />
     <Compile Include="Assets\Scripts\PlayerInventory.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\ObjectGenerator.cs" />
     <Compile Include="Assets\Scripts\PlayerWeapons.cs" />
   </ItemGroup>
   <ItemGroup>

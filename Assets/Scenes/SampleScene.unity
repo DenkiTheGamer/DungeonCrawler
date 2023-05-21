@@ -556,7 +556,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1003346329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -950,11 +950,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5581839953238407888, guid: c757f5ae7d7a8054c9b29f0d1b6616cb, type: 3}
       propertyPath: xDungeon
-      value: 100
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5581839953238407888, guid: c757f5ae7d7a8054c9b29f0d1b6616cb, type: 3}
       propertyPath: yDungeon
-      value: 100
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5581839953238407888, guid: c757f5ae7d7a8054c9b29f0d1b6616cb, type: 3}
       propertyPath: roomNumber
@@ -966,7 +966,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5581839953238407888, guid: c757f5ae7d7a8054c9b29f0d1b6616cb, type: 3}
       propertyPath: dungeonPieces.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5581839953238407888, guid: c757f5ae7d7a8054c9b29f0d1b6616cb, type: 3}
       propertyPath: transformsSpawn.Array.size
@@ -976,6 +976,10 @@ PrefabInstance:
       propertyPath: dungeonPieces.Array.data[5]
       value: 
       objectReference: {fileID: 2862767037801361457, guid: f7bd7ef4d33b1904aa1c6565bf49faf1, type: 3}
+    - target: {fileID: 5581839953238407888, guid: c757f5ae7d7a8054c9b29f0d1b6616cb, type: 3}
+      propertyPath: dungeonPieces.Array.data[6]
+      value: 
+      objectReference: {fileID: 2862767037801361457, guid: fcf4f42a8ac61184bbf418e3b7187b12, type: 3}
     - target: {fileID: 5581839953238407889, guid: c757f5ae7d7a8054c9b29f0d1b6616cb, type: 3}
       propertyPath: m_Name
       value: DungeonGenerator

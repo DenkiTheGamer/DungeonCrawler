@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    public GameObject[] weapons;
+    public int[] weapons;
 }
