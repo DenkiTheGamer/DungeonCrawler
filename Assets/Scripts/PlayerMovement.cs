@@ -8,26 +8,14 @@ public class PlayerMovement : MonoBehaviour
     private PlayerControls playerControls;
 
     private Transform playerTransform;
-    public Transform groundCheck;
 
     public Rigidbody2D rb2d;
 
-    public BoxCollider2D platformCollider;
-
-    public LayerMask ground;
-    public LayerMask platform;
-
     private Vector2 playerX;
-    private Vector2 jumpForce;
+    private Vector2 playerY;
+    private Vector2 playerPos;
 
-    public float moveSpeed;
-    public float checkRadius;
-    public float checkRadiusPlatform;
-
-    public int jumpHeight;
-
-    public bool isGrounded;
-    public bool onPlatform;
+    public float moveSpeed; 
 
     private void Awake()
     {
@@ -39,51 +27,19 @@ public class PlayerMovement : MonoBehaviour
     {
         playerControls.Enable();
     }
-
     private void OnDisable()
     {
-        playerControls.Disable();
-        playerControls.Player.Jump.performed -= Jump;
-        playerControls.Player.PlatformDown.performed -= PlatformDown;
+        playerControls.Disable(); 
     }
-
-    private void Start()
-    {
-        playerControls.Player.Jump.performed += Jump;
-        playerControls.Player.PlatformDown.performed += PlatformDown;
-    }
-
     private void FixedUpdate()
     {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, ground);
-        onPlatform = Physics2D.OverlapCircle(groundCheck.position, checkRadiusPlatform, platform);
-
         Vector2 movement = playerControls.Player.Move.ReadValue<Vector2>();
         playerX = playerTransform.position;
+        playerY = playerTransform.position;
         playerX.x += movement.x * moveSpeed * Time.fixedDeltaTime;
-        playerTransform.position = playerX;      
-    }
-    private void Jump(InputAction.CallbackContext context)
-    {
-        if (isGrounded)
-        {
-            Debug.Log("jumped");
-            jumpForce.y = jumpHeight;
-            rb2d.AddForce(jumpForce);
-        }
-    }  
-    private void PlatformDown(InputAction.CallbackContext context)
-    {
-        Debug.Log("platform down");
-        platformCollider = Physics2D.OverlapCircle(groundCheck.position, checkRadiusPlatform, platform).GetComponent<BoxCollider2D>();
-        if (onPlatform)
-        {
-            platformCollider.enabled = false;
-            Invoke("EnablePlatform", 1f);
-        }
-    }
-    private void EnablePlatform()
-    {
-        platformCollider.enabled = true;
-    }
+        playerY.y += movement.y * moveSpeed * Time.fixedDeltaTime;
+        playerPos.x = playerX.x;
+        playerPos.y = playerY.y;
+        rb2d.MovePosition(playerPos);
+    }      
 }
